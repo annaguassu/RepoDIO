@@ -1,0 +1,79 @@
+body{
+    font-family: sans-serif;
+}
+
+.container{/*toda a página*/
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{/*o próprio card (all the square)*/
+    height: 400px;
+    width: 500px;
+    background-image: url("./landscape.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: grayscale(0.5);/*filtro cinzinha*/
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+
+.card-wrapper{/*div do texto principal*/
+    text-align: center;
+    display: flex;
+    flex-direction: column; /*define um embaixo do outro*/
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.card-wrapper::before{/*definição da borda (stay hidden)*/
+    content: '';
+    position: absolute;/*sua posição vai ficar absoluta a sua div pai*/
+    height: 100px;
+    width: 100px;
+    display: block;
+    border: 1px solid white;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.card-wrapper h2{
+    font-size: 40px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    transition: 0.3s;
+}
+
+.card-wrapper p{
+    font-size: 0px;
+    font-weight: bold;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.card:hover{
+    filter: unset;
+}
+
+.card:hover > .card-wrapper::before{/*div filha*/
+    height: 300px;
+    width: 400px;
+    opacity: 1;
+}
+
+.card:hover > .card-wrapper p{
+    opacity: 1;
+    visibility: visible;
+    font-size: 14px;
+}
+
